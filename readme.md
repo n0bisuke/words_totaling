@@ -71,16 +71,6 @@ touch .babelrc
 }
 ```
 
-### package.jsonの編集
-
-```
-  "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --public-url /",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-```
-
 ### srcフォルダとjsファイル
 
 ```
@@ -140,11 +130,37 @@ export function createApp() {
 window.onload = () => createApp();
 ```
 
-## 現状のフォルダの中身
+### 起動
+
+* package.jsonの編集
+
+```
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --public-url /",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
+```
+npm run dev
+
+> words_totaling@1.0.0 dev /Users/n0bisuke/dotstudio/6_project/words_totaling
+> parcel index.html
+
+Server running at http://localhost:1234
+✨  Built in 55ms.
+```
+
+http://localhost:1234にブラウザでアクセス 
+
+![](https://i.gyazo.com/42e05abfd0ae5a25d948be2b66854375.png)
+
+### 現状のフォルダの中身
 
 ```
 $ ls
+dist              node_modules      package.json      src
 index.html        package-lock.json readme.md
-node_modules      package.json
 ```
 
