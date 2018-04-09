@@ -2,10 +2,10 @@
     <div class="container">
         <div class="input-area">
             <h2>コピペ↓</h2>
-            <textarea v-model="inputText" id="" cols="80" rows="30"></textarea>
+            <textarea v-model="inputText" id="" cols="80" rows="20"></textarea>
             <p><button @click="totaling" type="submit">計算</button></p>
         </div>
-        <BarChart :width="600" :height="500" :options="options" :chart-data="datacollection"></BarChart>
+        <BarChart :width="600" :height="400" :options="options" :chart-data="datacollection"></BarChart>
     </div>
 </template>
 
@@ -13,7 +13,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 }
 </style>
 
@@ -25,16 +25,21 @@ export default {
     data: function() {
         return {
             inputText: '',
-            labels: [],
             options: {},
+            datacollection: null,
             myChartData: [],
-            datacollection: null
+            myChartLabels: [],
+            myLabelName: ''
         }
     },
     methods: {
         //集計
         totaling: function(){
-            const flatText = this.inputText.split('\n').toString(); //行を分解した後、文字列に
+            const inputDataArr = this.inputText.split('\n'); //データを1行ごとの配列に
+            this.myLabelName = inputDataArr[0]; //先頭をラベルにする
+            inputDataArr.shift(); //先頭を削除
+
+            const flatText = inputDataArr.toString(); //配列を分解して文字列に
             const items = flatText.split(/, |,/); //配列に変換
             
             let result = {}; //集計結果を入れ込む
@@ -50,19 +55,22 @@ export default {
         //Chart.jsのlabelとdataの形式に分ける
         classify: function(items){
             for(const item of items){
-                this.labels.push(item.key);
+                this.myChartLabels.push(item.key);
                 this.myChartData.push(item.value);
             }
-            console.log(this.labels,this.myChartData);
 
             this.datacollection = {
-                labels: this.labels,
+                labels: this.myChartLabels,
                 datasets: [{
-                    label: '回答数',
+                    label: this.myLabelName,
                     backgroundColor: '#f87979',
                     data: this.myChartData
                 }]
             }
+            
+            //リセット処理
+            this.myChartLabels = [];
+            this.myChartData = [];
         },
 
         //オブジェクトのソート
