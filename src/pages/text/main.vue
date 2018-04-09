@@ -1,29 +1,67 @@
 <template>
     <div class="container">
         <div class="input-area">
-            <h2>コピペ↓</h2>
-            <textarea v-model="inputText" id="" cols="80" rows="20"></textarea>
-            <p><button @click="totaling" type="submit">計算</button></p>
+            <Header2 :header2-text="header2Text"></Header2> <br />
+            <p>1行目はデータラベルになります。</p>
+            <div class="box1">
+                <textarea v-model="inputText"></textarea>
+            </div>
+            <p><a href="#" @click="totaling" class="square_btn">集計する</a></p>
         </div>
         <BarChart :width="600" :height="400" :options="options" :chart-data="datacollection"></BarChart>
     </div>
 </template>
 
-<style>
+<style scoped>
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
+
+.box1 textarea {
+    margin: 0; 
+    padding: 0;
+    width: 600px;
+    height: 200px;
+    background: #eee;
+    border: 1px solid #bebebe;
+    font-size: 1em;
+}
+
+textarea:focus {
+    background: #edf4ff;
+    border: 1px solid #4881d9;
+}
+
+/*
+ボタン
+*/
+.square_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    transition: .4s;
+  }
+
+.square_btn:hover {
+    background: #00bcd4;
+    color: white;
+}
 </style>
 
 <script>
 import BarChart from './chart.vue';
+import Header2 from './header2.vue';
 
 export default {
-    name: 'main',
     data: function() {
         return {
+            header2Text: '集計したいデータをコピペ↓',
             inputText: '',
             options: {},
             datacollection: null,
@@ -92,15 +130,11 @@ export default {
             });
             // ソート後の配列を返す
             fn(newData); 
-        },
-
-        saveImage: function(){
-            console.log(this,BarChart);
-
         }
     },
     components: {
-        'BarChart': BarChart
+        'BarChart': BarChart,
+        'Header2': Header2
     }
 }
 </script>
