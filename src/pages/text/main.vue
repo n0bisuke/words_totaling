@@ -3,6 +3,7 @@
         <div class="input-area">
             <Header2 :header2-text="header2Text"></Header2> <br />
             <p>1行目はデータラベルになります。</p>
+            <p><a href="https://github.com/n0bisuke/words_totaling" target="_blank">使い方</p>
             <div class="box1">
                 <textarea v-model="inputText"></textarea>
             </div>
