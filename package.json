@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "parcel src/dev.index.html",
     "build": "parcel build src/dev.index.html --out-file index --public-url /words_totaling/dist",
+    "deploy": "npm run build && git add -A && git commit -m 'gh-pages deploy' && git push origin gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
