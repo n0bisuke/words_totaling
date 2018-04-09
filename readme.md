@@ -1,175 +1,39 @@
 
-## 準備
+## このサイトについて
 
-### フォルダ準備
+カンマと改行区切りのデータを入力すると集計してくれます。
 
-```
-mkdir words_totaling
-cd words_totaling
-npm init -y
-```
+![](https://i.gyazo.com/29c25d97d0a7d22ad8000e354426f8e0.gif)
 
-### .gitignoreを準備
+## 使い方
 
-```
-touch .gitignore
-```
+### 1. データの用意
 
-```.gitignore
-.DS_Store
-node_modules/
-dist/
-npm-debug.log
-yarn-error.log
-.env
-.cache
-.vscode
-```
+カンマと改行区切りのデータを用意します。
 
-### モジュールインストール
+#### connpassから
 
-```
-npm i --save-dev babel-polyfill babel-polyfill babel-preset-env parcel-bundler parcel-plugin-vue vue vue-router
-```
+もともと、connpassの事前アンケートのチェックボックス式のものを集計する用途で作ってみました。
 
-### index.htmlの作成
+* 事前アンケート
 
-```
-touch index.html
-```
+connpassでは申し込み時のアンケートを設定できます。
 
-```index.html
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Vue.jsで何か作っていく by n0bisuke</title>
-    </head>
+![](https://i.gyazo.com/e05809063b9c1796fd43fbb662adfe30.png)
 
-    <body>
-        <app></app>
-        <script src="./src/index.js"></script>
-    </body>
-    
-</html>
-```
+* CSVダウンロード
 
-### .babelrc
+参加申込者のデータをCSVでDL出来ます。
 
-```
-touch .babelrc
-```
+![](https://i.gyazo.com/d4cf192022faf01cabd060138fcf2001.png)
 
-```.babelrcs
-{
-  "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"]
-      }
-    }]
-  ]
-}
-```
+* 列をコピー
 
-### srcフォルダとjsファイル
+Numbersなどの適当なアプリでCSVデータを展開し、チェックボックス式の回答列を一括コピー
 
-```
-mkdir src
-touch src/app.vue
-touch src/index.js
-```
+![](https://i.gyazo.com/8df52df4884f296331e62052f74f70c9.png)
 
-```app.vue
-<template>
-    <div id="app">
-        testtest
-    </div>
-</template>
+### 2. 集計
 
-<script>
-export default {
-    name: 'app',
-    data() {
-        return {};
-    },
-    mounted() {},
-    computed: {},
-    methods: {}
-}
-</script>
-
-<style>
-body {
-    margin: 0;
-    background: #FBEFF2; /* fallback for old browsers */
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-#app{
-    text-align: center;
-}
-</style>
-```
-
-```index.js
-import Vue from 'vue'
-import App from './app.vue'
-import 'babel-polyfill'
-
-export function createApp() {    
-    const app = new Vue({
-        el: 'app',
-        render: h => h(App),
-        components: {app}
-    });
-    return {app};
-}
-
-window.onload = () => createApp();
-```
-
-### 起動
-
-* package.jsonの編集
-
-```
-  "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --public-url /",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-```
-
-```
-npm run dev
-
-> words_totaling@1.0.0 dev /Users/n0bisuke/dotstudio/6_project/words_totaling
-> parcel index.html
-
-Server running at http://localhost:1234
-✨  Built in 55ms.
-```
-
-http://localhost:1234にブラウザでアクセス 
-
-![](https://i.gyazo.com/42e05abfd0ae5a25d948be2b66854375.png)
-
-### 現状のフォルダの中身
-
-```
-$ ls
-dist              node_modules      package.json      src
-index.html        package-lock.json readme.md
-```
-
-## ルーティング追加
-
-```
-touch src/router.js
-```
-
-```
-
-```
+テキストボックスに貼り付けて、ボタンを押しましょう。
+結果がグラフで表示されます。
