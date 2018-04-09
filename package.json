@@ -16,7 +16,7 @@
   "devDependencies": {},
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html --public-url /",
+    "build": "parcel build index.html --public-url /dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
