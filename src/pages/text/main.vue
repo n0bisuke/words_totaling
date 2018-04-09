@@ -4,7 +4,6 @@
             <h2>コピペ↓</h2>
             <textarea v-model="inputText" id="" cols="80" rows="30"></textarea>
             <p><button @click="totaling" type="submit">計算</button></p>
-            <p><button @click="saveImage" type="submit">画像</button></p>
         </div>
         <BarChart :width="600" :height="500" :options="options" :chart-data="datacollection"></BarChart>
     </div>

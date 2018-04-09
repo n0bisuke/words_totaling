@@ -15,8 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --public-url https://n0bisuke.github.io/dist",
+    "dev": "parcel src/dev.index.html",
+    "build": "parcel build src/dev.index.html --out-file index --public-url /",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
