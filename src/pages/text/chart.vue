@@ -3,6 +3,7 @@ import { HorizontalBar, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
 export default {
+    name: 'chart',
     extends: HorizontalBar,
     mixins: [reactiveProp],
     props: ['options'],

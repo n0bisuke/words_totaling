@@ -18,10 +18,10 @@
 </style>
 
 <script>
-
 import BarChart from './chart.vue';
 
 export default {
+    name: 'main',
     data: function() {
         return {
             inputText: '',
@@ -49,10 +49,10 @@ export default {
             let result2 = [];
             for (const k of Object.keys(result)) result2.push({key: k, value: result[k]});
             // console.log(result2); //配列オブジェクト [{key: '',value: ''}]
-            this.object_array_sort(result2, 'value', 'DESC', (new_data) => this.classify(new_data));
+            this._object_array_sort(result2, 'value', 'DESC', (new_data) => this.classify(new_data));
         },
 
-        //Chart.jsのlabelとdataの形式に分ける
+        //Chart.jsのlabelとdataの形式に分けてChart.jsの形式に
         classify: function(items){
             for(const item of items){
                 this.myChartLabels.push(item.key);
@@ -66,15 +66,14 @@ export default {
                     backgroundColor: '#f87979',
                     data: this.myChartData
                 }]
-            }
-            
+            }            
             //リセット処理
             this.myChartLabels = [];
             this.myChartData = [];
         },
 
         //オブジェクトのソート
-        object_array_sort: (data,key,order,fn) => {
+        _object_array_sort: (data,key,order,fn) => {
             let num_a = -1;
             let num_b = 1;
             let newData = data;
@@ -104,5 +103,4 @@ export default {
         'BarChart': BarChart
     }
 }
-
 </script>

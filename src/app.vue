@@ -11,18 +11,6 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'app',
-    data() {
-        return {};
-    },
-    mounted() {},
-    computed: {},
-    methods: {}
-}
-</script>
-
 <style>
 body {
     margin: 0;
@@ -40,3 +28,15 @@ h1{
     margin-top:10px;
 }
 </style>
+
+<script>
+export default {
+    name: 'app',
+    data() {
+        return {};
+    },
+    mounted() {},
+    computed: {},
+    methods: {}
+}
+</script>
