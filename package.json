@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "parcel src/dev.index.html",
+    "dev": "parcel src/dev.index.html --out-dir app",
     "build": "parcel build src/dev.index.html --out-dir app --out-file index --public-url /words_totaling/app",
     "deploy": "rm -rf ./app && npm run build && git add -A && git commit -m 'gh-pages deploy' && git push origin gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
