@@ -164,3 +164,12 @@ dist              node_modules      package.json      src
 index.html        package-lock.json readme.md
 ```
 
+## ルーティング追加
+
+```
+touch src/router.js
+```
+
+```
+
+```
